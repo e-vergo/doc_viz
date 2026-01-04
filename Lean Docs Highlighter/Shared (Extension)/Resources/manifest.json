@@ -24,6 +24,8 @@
         "js": [ "content.js" ],
         "matches": [
             "https://lean-lang.org/doc/reference/*",
+            "https://lean-lang.org/theorem_proving_in_lean4/*",
+            "https://lean-lang.org/functional_programming_in_lean/*",
             "https://leanprover.github.io/reference-manual/*"
         ],
         "run_at": "document_start"

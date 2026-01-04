@@ -1,46 +1,62 @@
-/* Lean Docs Highlighter - Dark Theme + Syntax Highlighting */
+/* Lean Docs Highlighter - VS Code Dark Modern Theme */
+
+/* ============================================
+   VS CODE DARK MODERN PALETTE
+   ============================================ */
+
+:root {
+  /* Editor backgrounds (Dark Modern) */
+  --bg-primary: #1f1f1f;
+  --bg-secondary: #181818;
+  --bg-tertiary: #2d2d2d;
+  --bg-code: #1a1a1a;
+  --bg-hover: #2a2d2e;
+
+  /* Text colors */
+  --text-primary: #cccccc;
+  --text-secondary: #9d9d9d;
+  --text-muted: #6d6d6d;
+
+  /* UI colors */
+  --border-color: #3c3c3c;
+  --link-color: #4daafc;
+  --link-hover: #74c0fc;
+  --accent: #0078d4;
+
+  /* Syntax colors - VS Code Dark Modern / Dark+ */
+  --syn-keyword: #569cd6;           /* blue - keywords */
+  --syn-keyword-control: #c586c0;   /* pink/magenta - control flow */
+  --syn-const: #4ec9b0;             /* teal - types, constructors */
+  --syn-function: #e6e6e6;          /* white - functions */
+  --syn-var: #9cdcfe;               /* light blue - variables */
+  --syn-constant: #f9f9f9;          /* bright cyan - constants, enums */
+  --syn-literal: #ce9178;           /* orange - strings */
+  --syn-string: #ce9178;            /* orange - strings */
+  --syn-number: #b5cea8;            /* light green - numbers */
+  --syn-sort: #4ec9b0;              /* teal - sorts (Type, Prop) */
+  --syn-comment: #6a9955;           /* green - comments */
+  --syn-operator: #fff873;          /* yellow - operators */
+  --syn-module: #4ec9b0;            /* teal - module names */
+
+  /* Message colors */
+  --syn-error: #f14c4c;
+  --syn-warning: #cca700;
+  --syn-info: #3794ff;
+}
 
 /* ============================================
    BASE DARK THEME
    ============================================ */
-
-:root {
-  --bg-primary: #1e1e1e;
-  --bg-secondary: #252526;
-  --bg-tertiary: #2d2d2d;
-  --bg-code: #1a1a1a;
-  --text-primary: #d4d4d4;
-  --text-secondary: #9d9d9d;
-  --text-muted: #6d6d6d;
-  --border-color: #404040;
-  --link-color: #4fc1ff;
-  --link-hover: #80d4ff;
-
-  /* Syntax colors - VS Code dark inspired */
-  --syn-keyword: #569cd6;
-  --syn-const: #dcdcaa;
-  --syn-var: #9cdcfe;
-  --syn-literal: #ce9178;
-  --syn-string: #ce9178;
-  --syn-number: #b5cea8;
-  --syn-sort: #4ec9b0;
-  --syn-comment: #6a9955;
-  --syn-error: #f44747;
-  --syn-warning: #cca700;
-  --syn-info: #3794ff;
-}
 
 html, body {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
 }
 
-/* Main content area */
 main, article, section, div, nav, aside, header, footer {
   background-color: transparent !important;
 }
 
-/* Override any white backgrounds */
 .content, .main-content, #content, #main {
   background-color: var(--bg-primary) !important;
 }
@@ -88,7 +104,6 @@ a:hover {
   border-radius: 3px !important;
 }
 
-/* Pre and code elements */
 pre {
   background-color: var(--bg-code) !important;
   color: var(--text-primary) !important;
@@ -109,99 +124,167 @@ pre code {
 }
 
 /* ============================================
-   SYNTAX HIGHLIGHTING - TOKEN COLORS
+   SYNTAX HIGHLIGHTING - COMPLETE TOKEN SET
    ============================================ */
 
-/* Keywords: structure, where, def, theorem, lemma, instance, class, etc. */
+/* Keywords: def, theorem, lemma, inductive, structure, class, instance, where, etc. */
 .hl.lean .keyword,
-.keyword {
+.hl.lean .keyword.token,
+.keyword,
+.keyword.token {
   color: var(--syn-keyword) !important;
   font-weight: 600 !important;
 }
 
-/* Constants and constructors */
+/* Constants and constructors - uses function color (yellow) for visibility */
 .hl.lean .const,
-.const {
-  color: var(--syn-const) !important;
+.hl.lean .const.token,
+.const,
+.const.token {
+  color: var(--syn-constant) !important;
 }
 
 /* Variables */
 .hl.lean .var,
-.var {
+.hl.lean .var.token,
+.var,
+.var.token {
   color: var(--syn-var) !important;
   font-style: italic !important;
 }
 
-/* Literals (strings, numbers) */
+/* Literals (general) */
 .hl.lean .literal,
-.literal {
+.hl.lean .literal.token,
+.literal,
+.literal.token {
   color: var(--syn-literal) !important;
 }
 
-/* String literals specifically */
+/* String literals */
 .hl.lean .string,
-.string {
+.hl.lean .string.token,
+.hl.lean .literal.string,
+.string,
+.string.token {
   color: var(--syn-string) !important;
 }
 
 /* Numeric literals */
 .hl.lean .number,
-.number {
+.hl.lean .number.token,
+.number,
+.number.token {
   color: var(--syn-number) !important;
 }
 
-/* Sorts (Type, Prop, etc.) */
+/* Sorts: Type, Prop, Sort */
 .hl.lean .sort,
-.sort {
+.hl.lean .sort.token,
+.sort,
+.sort.token {
   color: var(--syn-sort) !important;
+  font-weight: 500 !important;
 }
 
 /* Comments */
 .hl.lean .comment,
-.comment {
+.hl.lean .comment.token,
+.comment,
+.comment.token {
   color: var(--syn-comment) !important;
   font-style: italic !important;
 }
 
-/* Universe levels */
+/* Documentation comments */
+.hl.lean .doc-comment,
+.hl.lean .doc-comment.token,
+.doc-comment,
+.doc-comment.token {
+  color: var(--syn-comment) !important;
+  font-style: italic !important;
+}
+
+/* Module names */
+.hl.lean .module-name,
+.hl.lean .module-name.token,
+.module-name,
+.module-name.token {
+  color: var(--syn-module) !important;
+}
+
+/* Option type markers */
+.hl.lean .option,
+.hl.lean .option.token,
+.option,
+.option.token {
+  color: var(--syn-constant) !important;
+}
+
+/* Typed expressions (with inferred types) */
+.hl.lean .typed,
+.hl.lean .typed.token,
+.typed,
+.typed.token {
+  color: var(--text-primary) !important;
+}
+
+/* Unknown/unrecognized tokens - styled as operators since SubVerso marks
+   punctuation like : (type annotations), | (pattern matching), etc. as unknown */
+.hl.lean .unknown,
+.hl.lean .unknown.token,
+.unknown,
+.unknown.token {
+  color: var(--syn-operator) !important;
+}
+
+/* ============================================
+   UNIVERSE LEVELS
+   ============================================ */
+
+/* Universe level variables */
 .hl.lean .level-var,
-.level-var {
+.hl.lean .level-var.token,
+.level-var,
+.level-var.token {
+  color: var(--syn-var) !important;
+  font-style: italic !important;
+}
+
+/* Universe level constants (0, 1, 2, etc.) */
+.hl.lean .level-const,
+.hl.lean .level-const.token,
+.level-const,
+.level-const.token {
   color: var(--syn-var) !important;
 }
 
-.hl.lean .level-const,
-.level-const {
-  color: var(--syn-number) !important;
-}
-
+/* Universe level operators (+, max, imax) */
 .hl.lean .level-op,
-.level-op {
-  color: var(--syn-keyword) !important;
-}
-
-/* Unknown/unrecognized tokens */
-.hl.lean .unknown,
-.unknown {
-  color: var(--text-secondary) !important;
+.hl.lean .level-op.token,
+.level-op,
+.level-op.token {
+  color: var(--syn-var) !important;
 }
 
 /* ============================================
    INTERACTIVE ELEMENTS
    ============================================ */
 
-/* Tokens with hover info */
 .token {
   cursor: default;
 }
 
-.token.has-info:hover {
-  background-color: var(--bg-tertiary) !important;
+.token.has-info:hover,
+.has-info:hover {
+  background-color: var(--bg-hover) !important;
   border-radius: 2px !important;
 }
 
-/* Binding highlights */
-.token.binding-hl {
-  background-color: rgba(86, 156, 214, 0.2) !important;
+/* Binding highlights (when hovering over a variable) */
+.token.binding-hl,
+.binding-hl {
+  background-color: rgba(79, 193, 255, 0.25) !important;
   border-radius: 2px !important;
 }
 
@@ -209,26 +292,50 @@ pre code {
    TACTIC STATE DISPLAY
    ============================================ */
 
+.tactic {
+  background-color: var(--bg-secondary) !important;
+}
+
 .tactic-state {
   background-color: var(--bg-secondary) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 4px !important;
-  padding: 0.5em !important;
+  padding: 0.75em !important;
   margin: 0.5em 0 !important;
 }
 
 .goal {
-  border-left: 3px solid var(--syn-keyword) !important;
-  padding-left: 0.5em !important;
+  border-left: 3px solid var(--accent) !important;
+  padding-left: 0.75em !important;
   margin: 0.5em 0 !important;
 }
 
-.hypothesis {
-  color: var(--text-secondary) !important;
+.goal-name {
+  color: var(--syn-function) !important;
+  font-weight: 600 !important;
 }
 
-.case-label {
+.hypothesis,
+.hypotheses {
+  color: var(--text-primary) !important;
+}
+
+.hypothesis .name {
+  color: var(--syn-var) !important;
+}
+
+.hypothesis .type {
   color: var(--syn-const) !important;
+}
+
+.conclusion {
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+}
+
+.case-label,
+.labeled-case {
+  color: var(--syn-keyword-control) !important;
   font-weight: 600 !important;
 }
 
@@ -237,24 +344,38 @@ pre code {
    ============================================ */
 
 .has-info.error,
-.parse-message.error {
+.error.token,
+.parse-message.error,
+.verso-message.error {
   border-bottom: 2px wavy var(--syn-error) !important;
 }
 
 .has-info.warning,
-.parse-message.warning {
+.warning.token,
+.parse-message.warning,
+.verso-message.warning {
   border-bottom: 2px wavy var(--syn-warning) !important;
 }
 
 .has-info.information,
-.parse-message.info {
+.information.token,
+.parse-message.info,
+.verso-message.info {
   border-bottom: 2px wavy var(--syn-info) !important;
 }
 
-/* Syntax error blocks */
 .syntax-error {
-  background-color: rgba(244, 71, 71, 0.1) !important;
+  background-color: rgba(241, 76, 76, 0.15) !important;
   border: 1px solid var(--syn-error) !important;
+  border-radius: 4px !important;
+}
+
+.messages {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  margin: 0.5em 0 !important;
 }
 
 /* ============================================
@@ -262,11 +383,14 @@ pre code {
    ============================================ */
 
 .hover-info,
-[data-tippy-root] {
+.hover-container,
+[data-tippy-root],
+[data-tippy-root] .tippy-box,
+[data-tippy-root] .tippy-content {
   background-color: var(--bg-secondary) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 4px !important;
-  color: var(--text-primary) !important;
+  color: var(--syn-var) !important;
 }
 
 .hl.lean.popup {
@@ -280,9 +404,33 @@ pre code {
 .docstring {
   background-color: var(--bg-secondary) !important;
   border-left: 3px solid var(--syn-comment) !important;
-  padding: 0.5em 1em !important;
+  padding: 0.75em 1em !important;
   margin: 0.5em 0 !important;
-  color: var(--text-secondary) !important;
+  color: var(--text-primary) !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+/* ============================================
+   TRACE OUTPUT
+   ============================================ */
+
+.trace,
+.lean-output {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  font-family: inherit !important;
+}
+
+.trace-children {
+  border-left: 2px solid var(--border-color) !important;
+  margin-left: 0.5em !important;
+  padding-left: 0.5em !important;
+}
+
+.trace-class {
+  color: var(--syn-module) !important;
 }
 
 /* ============================================
@@ -299,6 +447,25 @@ pre code {
   background-color: var(--bg-secondary) !important;
   color: var(--text-muted) !important;
   border-right: 1px solid var(--border-color) !important;
+  padding-right: 0.5em !important;
+  margin-right: 0.5em !important;
+  user-select: none !important;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+body > header,
+body > header .header-title-wrapper {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  padding: 0.5em 1em !important;
+}
+
+body > header .header-title-wrapper a,
+body > header .header-title-wrapper h1 {
+  color: var(--text-primary) !important;
 }
 
 /* ============================================
@@ -314,8 +481,16 @@ nav a, .sidebar a, .toc a {
   color: var(--text-secondary) !important;
 }
 
-nav a:hover, .sidebar a:hover, .toc a:hover {
+nav a:hover, .sidebar a:hover, .toc a:hover,
+nav a:focus, .sidebar a:focus, .toc a:focus {
   color: var(--link-color) !important;
+}
+
+/* Active/current nav item */
+nav a.active, .sidebar a.active, .toc a.active,
+nav a[aria-current], .sidebar a[aria-current] {
+  color: var(--link-color) !important;
+  font-weight: 600 !important;
 }
 
 /* ============================================
@@ -324,19 +499,23 @@ nav a:hover, .sidebar a:hover, .toc a:hover {
 
 table {
   border-color: var(--border-color) !important;
+  border-collapse: collapse !important;
 }
 
 th {
   background-color: var(--bg-secondary) !important;
-  border-color: var(--border-color) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.5em !important;
+  font-weight: 600 !important;
 }
 
 td {
-  border-color: var(--border-color) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.5em !important;
 }
 
 tr:nth-child(even) {
-  background-color: var(--bg-tertiary) !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
 }
 
 /* ============================================
@@ -347,27 +526,57 @@ input, textarea, select, button {
   background-color: var(--bg-secondary) !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: var(--bg-tertiary) !important;
+  border-color: var(--accent) !important;
+}
+
+/* ============================================
+   DETAILS / COLLAPSIBLES
+   ============================================ */
+
+details {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  margin: 0.5em 0 !important;
+}
+
+details summary {
+  cursor: pointer !important;
+  color: var(--link-color) !important;
+  font-weight: 500 !important;
+}
+
+details summary:hover {
+  color: var(--link-hover) !important;
 }
 
 /* ============================================
    MISC OVERRIDES
    ============================================ */
 
-/* Horizontal rules */
 hr {
   border-color: var(--border-color) !important;
+  border-style: solid !important;
 }
 
-/* Blockquotes */
 blockquote {
   background-color: var(--bg-secondary) !important;
-  border-left: 3px solid var(--border-color) !important;
+  border-left: 3px solid var(--accent) !important;
   color: var(--text-secondary) !important;
+  padding: 0.5em 1em !important;
+  margin: 0.5em 0 !important;
+  border-radius: 0 4px 4px 0 !important;
 }
 
 /* Selection highlight */
 ::selection {
-  background-color: rgba(86, 156, 214, 0.4) !important;
+  background-color: rgba(0, 120, 212, 0.4) !important;
   color: var(--text-primary) !important;
 }
 
@@ -388,4 +597,62 @@ blockquote {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
+}
+
+/* ============================================
+   TECHNICAL TERMS / DEFINITIONS
+   ============================================ */
+
+/* Technical term highlights (deftech, mark, etc.) */
+mark,
+.deftech,
+.tech,
+.tech-term,
+.defined-term {
+  background-color: rgba(79, 193, 255, 0.15) !important;
+  color: var(--text-primary) !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
+  border: 1px solid rgba(79, 193, 255, 0.3) !important;
+}
+
+/* Technical term definitions - no special styling, just ensure readable text */
+.def-technical-term {
+  color: var(--text-primary) !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   GRAMMAR / BNF NOTATION
+   ============================================ */
+
+.bnf {
+  color: var(--text-secondary) !important;
+}
+
+.nonterminal {
+  color: var(--syn-var) !important;
+  font-style: italic !important;
+}
+
+.from-nonterminal {
+  color: var(--syn-var) !important;
+}
+
+.literal-ident {
+  color: var(--syn-string) !important;
+}
+
+.plain-keyword {
+  color: var(--syn-keyword) !important;
+}
+
+.keyword-of {
+  color: var(--syn-keyword) !important;
+}
+
+.local-name {
+  color: var(--syn-var) !important;
 }
