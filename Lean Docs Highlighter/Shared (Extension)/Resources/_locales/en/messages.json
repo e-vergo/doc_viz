@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "Lean Docs Highlighter",
+        "description": "The display name for the extension."
+    },
+    "extension_description": {
+        "message": "Adds dark mode and syntax highlighting to Lean language documentation.",
+        "description": "Description of what the extension does."
+    }
+}

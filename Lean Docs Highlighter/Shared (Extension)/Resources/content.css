@@ -1,0 +1,391 @@
+/* Lean Docs Highlighter - Dark Theme + Syntax Highlighting */
+
+/* ============================================
+   BASE DARK THEME
+   ============================================ */
+
+:root {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252526;
+  --bg-tertiary: #2d2d2d;
+  --bg-code: #1a1a1a;
+  --text-primary: #d4d4d4;
+  --text-secondary: #9d9d9d;
+  --text-muted: #6d6d6d;
+  --border-color: #404040;
+  --link-color: #4fc1ff;
+  --link-hover: #80d4ff;
+
+  /* Syntax colors - VS Code dark inspired */
+  --syn-keyword: #569cd6;
+  --syn-const: #dcdcaa;
+  --syn-var: #9cdcfe;
+  --syn-literal: #ce9178;
+  --syn-string: #ce9178;
+  --syn-number: #b5cea8;
+  --syn-sort: #4ec9b0;
+  --syn-comment: #6a9955;
+  --syn-error: #f44747;
+  --syn-warning: #cca700;
+  --syn-info: #3794ff;
+}
+
+html, body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Main content area */
+main, article, section, div, nav, aside, header, footer {
+  background-color: transparent !important;
+}
+
+/* Override any white backgrounds */
+.content, .main-content, #content, #main {
+  background-color: var(--bg-primary) !important;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+}
+
+p, li, td, th, span, label {
+  color: var(--text-primary) !important;
+}
+
+a {
+  color: var(--link-color) !important;
+}
+
+a:hover {
+  color: var(--link-hover) !important;
+}
+
+/* ============================================
+   CODE BLOCKS - BASE STYLING
+   ============================================ */
+
+.hl.lean {
+  background-color: var(--bg-code) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+}
+
+.hl.lean.block {
+  padding: 1em !important;
+  margin: 1em 0 !important;
+  overflow-x: auto !important;
+}
+
+.hl.lean.inline {
+  padding: 0.15em 0.4em !important;
+  border-radius: 3px !important;
+}
+
+/* Pre and code elements */
+pre {
+  background-color: var(--bg-code) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}
+
+code {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
+}
+
+pre code {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   SYNTAX HIGHLIGHTING - TOKEN COLORS
+   ============================================ */
+
+/* Keywords: structure, where, def, theorem, lemma, instance, class, etc. */
+.hl.lean .keyword,
+.keyword {
+  color: var(--syn-keyword) !important;
+  font-weight: 600 !important;
+}
+
+/* Constants and constructors */
+.hl.lean .const,
+.const {
+  color: var(--syn-const) !important;
+}
+
+/* Variables */
+.hl.lean .var,
+.var {
+  color: var(--syn-var) !important;
+  font-style: italic !important;
+}
+
+/* Literals (strings, numbers) */
+.hl.lean .literal,
+.literal {
+  color: var(--syn-literal) !important;
+}
+
+/* String literals specifically */
+.hl.lean .string,
+.string {
+  color: var(--syn-string) !important;
+}
+
+/* Numeric literals */
+.hl.lean .number,
+.number {
+  color: var(--syn-number) !important;
+}
+
+/* Sorts (Type, Prop, etc.) */
+.hl.lean .sort,
+.sort {
+  color: var(--syn-sort) !important;
+}
+
+/* Comments */
+.hl.lean .comment,
+.comment {
+  color: var(--syn-comment) !important;
+  font-style: italic !important;
+}
+
+/* Universe levels */
+.hl.lean .level-var,
+.level-var {
+  color: var(--syn-var) !important;
+}
+
+.hl.lean .level-const,
+.level-const {
+  color: var(--syn-number) !important;
+}
+
+.hl.lean .level-op,
+.level-op {
+  color: var(--syn-keyword) !important;
+}
+
+/* Unknown/unrecognized tokens */
+.hl.lean .unknown,
+.unknown {
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================
+   INTERACTIVE ELEMENTS
+   ============================================ */
+
+/* Tokens with hover info */
+.token {
+  cursor: default;
+}
+
+.token.has-info:hover {
+  background-color: var(--bg-tertiary) !important;
+  border-radius: 2px !important;
+}
+
+/* Binding highlights */
+.token.binding-hl {
+  background-color: rgba(86, 156, 214, 0.2) !important;
+  border-radius: 2px !important;
+}
+
+/* ============================================
+   TACTIC STATE DISPLAY
+   ============================================ */
+
+.tactic-state {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  margin: 0.5em 0 !important;
+}
+
+.goal {
+  border-left: 3px solid var(--syn-keyword) !important;
+  padding-left: 0.5em !important;
+  margin: 0.5em 0 !important;
+}
+
+.hypothesis {
+  color: var(--text-secondary) !important;
+}
+
+.case-label {
+  color: var(--syn-const) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+   MESSAGES (ERRORS, WARNINGS, INFO)
+   ============================================ */
+
+.has-info.error,
+.parse-message.error {
+  border-bottom: 2px wavy var(--syn-error) !important;
+}
+
+.has-info.warning,
+.parse-message.warning {
+  border-bottom: 2px wavy var(--syn-warning) !important;
+}
+
+.has-info.information,
+.parse-message.info {
+  border-bottom: 2px wavy var(--syn-info) !important;
+}
+
+/* Syntax error blocks */
+.syntax-error {
+  background-color: rgba(244, 71, 71, 0.1) !important;
+  border: 1px solid var(--syn-error) !important;
+}
+
+/* ============================================
+   TOOLTIPS / HOVER POPUPS
+   ============================================ */
+
+.hover-info,
+[data-tippy-root] {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  color: var(--text-primary) !important;
+}
+
+.hl.lean.popup {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* ============================================
+   DOCSTRINGS
+   ============================================ */
+
+.docstring {
+  background-color: var(--bg-secondary) !important;
+  border-left: 3px solid var(--syn-comment) !important;
+  padding: 0.5em 1em !important;
+  margin: 0.5em 0 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ============================================
+   EXAMPLE FILE DISPLAYS
+   ============================================ */
+
+.example-file {
+  background-color: var(--bg-code) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}
+
+.example-file .line-numbers {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-muted) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+/* ============================================
+   NAVIGATION & SIDEBAR
+   ============================================ */
+
+nav, .sidebar, .toc, .nav {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+nav a, .sidebar a, .toc a {
+  color: var(--text-secondary) !important;
+}
+
+nav a:hover, .sidebar a:hover, .toc a:hover {
+  color: var(--link-color) !important;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+table {
+  border-color: var(--border-color) !important;
+}
+
+th {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+td {
+  border-color: var(--border-color) !important;
+}
+
+tr:nth-child(even) {
+  background-color: var(--bg-tertiary) !important;
+}
+
+/* ============================================
+   FORMS & INPUTS
+   ============================================ */
+
+input, textarea, select, button {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* ============================================
+   MISC OVERRIDES
+   ============================================ */
+
+/* Horizontal rules */
+hr {
+  border-color: var(--border-color) !important;
+}
+
+/* Blockquotes */
+blockquote {
+  background-color: var(--bg-secondary) !important;
+  border-left: 3px solid var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: rgba(86, 156, 214, 0.4) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Scrollbars (webkit) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
