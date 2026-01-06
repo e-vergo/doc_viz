@@ -6,6 +6,24 @@
     <script type="module" src="popup.js"></script>
 </head>
 <body>
-    <strong>Hello World!</strong>
+    <div class="theme-selector">
+        <h2>Theme</h2>
+        <label>
+            <input type="radio" name="theme" value="light-regular">
+            <span>Light</span>
+        </label>
+        <label>
+            <input type="radio" name="theme" value="light-highlighting">
+            <span>Light + Syntax</span>
+        </label>
+        <label>
+            <input type="radio" name="theme" value="dark-regular">
+            <span>Dark</span>
+        </label>
+        <label>
+            <input type="radio" name="theme" value="dark-highlighting" checked>
+            <span>Dark + Syntax</span>
+        </label>
+    </div>
 </body>
 </html>

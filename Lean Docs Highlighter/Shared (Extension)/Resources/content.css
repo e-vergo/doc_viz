@@ -1,91 +1,132 @@
-/* Lean Docs Highlighter - VS Code Dark Modern Theme */
+/* Lean Docs Highlighter - Multi-Theme Support */
 
 /* ============================================
-   VS CODE DARK MODERN PALETTE
+   CSS CUSTOM PROPERTIES (always available)
    ============================================ */
 
 :root {
-  /* Editor backgrounds (Dark Modern) */
+  /* Dark mode backgrounds */
   --bg-primary: #1f1f1f;
   --bg-secondary: #181818;
   --bg-tertiary: #2d2d2d;
   --bg-code: #1a1a1a;
   --bg-hover: #2a2d2e;
 
-  /* Text colors */
+  /* Dark mode text colors */
   --text-primary: #cccccc;
   --text-secondary: #9d9d9d;
   --text-muted: #6d6d6d;
 
-  /* UI colors */
+  /* Dark mode UI colors */
   --border-color: #3c3c3c;
   --link-color: #4daafc;
   --link-hover: #74c0fc;
   --accent: #0078d4;
 
-  /* Syntax colors - VS Code Dark Modern / Dark+ */
-  --syn-keyword: #569cd6;           /* blue - keywords */
-  --syn-keyword-control: #c586c0;   /* pink/magenta - control flow */
-  --syn-const: #4ec9b0;             /* teal - types, constructors */
-  --syn-function: #e6e6e6;          /* white - functions */
-  --syn-var: #9cdcfe;               /* light blue - variables */
-  --syn-constant: #f9f9f9;          /* bright cyan - constants, enums */
-  --syn-literal: #ce9178;           /* orange - strings */
-  --syn-string: #ce9178;            /* orange - strings */
-  --syn-number: #b5cea8;            /* light green - numbers */
-  --syn-sort: #4ec9b0;              /* teal - sorts (Type, Prop) */
-  --syn-comment: #6a9955;           /* green - comments */
-  --syn-operator: #fff873;          /* yellow - operators */
-  --syn-module: #4ec9b0;            /* teal - module names */
+  /* Syntax colors - VS Code Dark Modern */
+  --syn-keyword: #569cd6;
+  --syn-keyword-control: #c586c0;
+  --syn-const: #4ec9b0;
+  --syn-function: #e6e6e6;
+  --syn-var: #9cdcfe;
+  --syn-constant: #f9f9f9;
+  --syn-literal: #ce9178;
+  --syn-string: #ce9178;
+  --syn-number: #b5cea8;
+  --syn-sort: #4ec9b0;
+  --syn-comment: #6a9955;
+  --syn-operator: #fff873;
+  --syn-module: #4ec9b0;
 
   /* Message colors */
   --syn-error: #f14c4c;
   --syn-warning: #cca700;
   --syn-info: #3794ff;
+
+  /* Light mode syntax colors (darker for light backgrounds) */
+  --syn-keyword-light: #0000ff;
+  --syn-const-light: #267f99;
+  --syn-var-light: #001080;
+  --syn-literal-light: #a31515;
+  --syn-string-light: #a31515;
+  --syn-number-light: #098658;
+  --syn-sort-light: #267f99;
+  --syn-comment-light: #008000;
+  --syn-operator-light: #000000;
+  --syn-module-light: #267f99;
+
+  /* Light mode embellishment colors */
+  --bg-light-primary: #ffffff;
+  --bg-light-secondary: #f5f5f5;
+  --bg-light-code: #f8f8f8;
+  --bg-light-hover: #e8e8e8;
+  --text-light-primary: #1f1f1f;
+  --text-light-secondary: #555555;
+  --text-light-muted: #888888;
+  --border-light: #333333;
+  --link-light: #0066cc;
+  --link-light-hover: #004499;
+  --accent-light: #0078d4;
 }
 
 /* ============================================
-   BASE DARK THEME
+   DARK THEME - BASE STYLES
+   Applies to: dark-regular, dark-highlighting
    ============================================ */
 
-html, body {
+html[data-theme^="dark"],
+html[data-theme^="dark"] body {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
 }
 
-main, article, section, div, nav, aside, header, footer {
+html[data-theme^="dark"] main,
+html[data-theme^="dark"] article,
+html[data-theme^="dark"] section,
+html[data-theme^="dark"] div,
+html[data-theme^="dark"] nav,
+html[data-theme^="dark"] aside,
+html[data-theme^="dark"] header,
+html[data-theme^="dark"] footer {
   background-color: transparent !important;
 }
 
-.content, .main-content, #content, #main {
+html[data-theme^="dark"] .content,
+html[data-theme^="dark"] .main-content,
+html[data-theme^="dark"] #content,
+html[data-theme^="dark"] #main {
   background-color: var(--bg-primary) !important;
 }
 
-/* ============================================
-   TYPOGRAPHY
-   ============================================ */
-
-h1, h2, h3, h4, h5, h6 {
+/* Dark Typography */
+html[data-theme^="dark"] h1,
+html[data-theme^="dark"] h2,
+html[data-theme^="dark"] h3,
+html[data-theme^="dark"] h4,
+html[data-theme^="dark"] h5,
+html[data-theme^="dark"] h6 {
   color: var(--text-primary) !important;
 }
 
-p, li, td, th, span, label {
+html[data-theme^="dark"] p,
+html[data-theme^="dark"] li,
+html[data-theme^="dark"] td,
+html[data-theme^="dark"] th,
+html[data-theme^="dark"] span,
+html[data-theme^="dark"] label {
   color: var(--text-primary) !important;
 }
 
-a {
+html[data-theme^="dark"] a {
   color: var(--link-color) !important;
 }
 
-a:hover {
+html[data-theme^="dark"] a:hover {
   color: var(--link-hover) !important;
 }
 
-/* ============================================
-   CODE BLOCKS - BASE STYLING
-   ============================================ */
-
-.hl.lean {
+/* Dark Code Blocks */
+html[data-theme^="dark"] .hl.lean {
   background-color: var(--bg-code) !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color) !important;
@@ -93,210 +134,55 @@ a:hover {
   padding: 0.5em !important;
 }
 
-.hl.lean.block {
+html[data-theme^="dark"] .hl.lean.block {
   padding: 1em !important;
   margin: 1em 0 !important;
   overflow-x: auto !important;
 }
 
-.hl.lean.inline {
+html[data-theme^="dark"] .hl.lean.inline {
   padding: 0.15em 0.4em !important;
   border-radius: 3px !important;
 }
 
-pre {
+html[data-theme^="dark"] pre {
   background-color: var(--bg-code) !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 4px !important;
 }
 
-code {
+html[data-theme^="dark"] code {
   background-color: var(--bg-tertiary) !important;
   color: var(--text-primary) !important;
   padding: 0.1em 0.3em !important;
   border-radius: 3px !important;
 }
 
-pre code {
+html[data-theme^="dark"] pre code {
   background-color: transparent !important;
   padding: 0 !important;
 }
 
-/* ============================================
-   SYNTAX HIGHLIGHTING - COMPLETE TOKEN SET
-   ============================================ */
-
-/* Keywords: def, theorem, lemma, inductive, structure, class, instance, where, etc. */
-.hl.lean .keyword,
-.hl.lean .keyword.token,
-.keyword,
-.keyword.token {
-  color: var(--syn-keyword) !important;
-  font-weight: 600 !important;
-}
-
-/* Constants and constructors - uses function color (yellow) for visibility */
-.hl.lean .const,
-.hl.lean .const.token,
-.const,
-.const.token {
-  color: var(--syn-constant) !important;
-}
-
-/* Variables */
-.hl.lean .var,
-.hl.lean .var.token,
-.var,
-.var.token {
-  color: var(--syn-var) !important;
-  font-style: italic !important;
-}
-
-/* Literals (general) */
-.hl.lean .literal,
-.hl.lean .literal.token,
-.literal,
-.literal.token {
-  color: var(--syn-literal) !important;
-}
-
-/* String literals */
-.hl.lean .string,
-.hl.lean .string.token,
-.hl.lean .literal.string,
-.string,
-.string.token {
-  color: var(--syn-string) !important;
-}
-
-/* Numeric literals */
-.hl.lean .number,
-.hl.lean .number.token,
-.number,
-.number.token {
-  color: var(--syn-number) !important;
-}
-
-/* Sorts: Type, Prop, Sort */
-.hl.lean .sort,
-.hl.lean .sort.token,
-.sort,
-.sort.token {
-  color: var(--syn-sort) !important;
-  font-weight: 500 !important;
-}
-
-/* Comments */
-.hl.lean .comment,
-.hl.lean .comment.token,
-.comment,
-.comment.token {
-  color: var(--syn-comment) !important;
-  font-style: italic !important;
-}
-
-/* Documentation comments */
-.hl.lean .doc-comment,
-.hl.lean .doc-comment.token,
-.doc-comment,
-.doc-comment.token {
-  color: var(--syn-comment) !important;
-  font-style: italic !important;
-}
-
-/* Module names */
-.hl.lean .module-name,
-.hl.lean .module-name.token,
-.module-name,
-.module-name.token {
-  color: var(--syn-module) !important;
-}
-
-/* Option type markers */
-.hl.lean .option,
-.hl.lean .option.token,
-.option,
-.option.token {
-  color: var(--syn-constant) !important;
-}
-
-/* Typed expressions (with inferred types) */
-.hl.lean .typed,
-.hl.lean .typed.token,
-.typed,
-.typed.token {
-  color: var(--text-primary) !important;
-}
-
-/* Unknown/unrecognized tokens - styled as operators since SubVerso marks
-   punctuation like : (type annotations), | (pattern matching), etc. as unknown */
-.hl.lean .unknown,
-.hl.lean .unknown.token,
-.unknown,
-.unknown.token {
-  color: var(--syn-operator) !important;
-}
-
-/* ============================================
-   UNIVERSE LEVELS
-   ============================================ */
-
-/* Universe level variables */
-.hl.lean .level-var,
-.hl.lean .level-var.token,
-.level-var,
-.level-var.token {
-  color: var(--syn-var) !important;
-  font-style: italic !important;
-}
-
-/* Universe level constants (0, 1, 2, etc.) */
-.hl.lean .level-const,
-.hl.lean .level-const.token,
-.level-const,
-.level-const.token {
-  color: var(--syn-var) !important;
-}
-
-/* Universe level operators (+, max, imax) */
-.hl.lean .level-op,
-.hl.lean .level-op.token,
-.level-op,
-.level-op.token {
-  color: var(--syn-var) !important;
-}
-
-/* ============================================
-   INTERACTIVE ELEMENTS
-   ============================================ */
-
-.token {
-  cursor: default;
-}
-
-.token.has-info:hover,
-.has-info:hover {
+/* Dark Interactive Elements */
+html[data-theme^="dark"] .token.has-info:hover,
+html[data-theme^="dark"] .has-info:hover {
   background-color: var(--bg-hover) !important;
   border-radius: 2px !important;
 }
 
-/* Binding highlights (when hovering over a variable) */
-.token.binding-hl,
-.binding-hl {
+html[data-theme^="dark"] .token.binding-hl,
+html[data-theme^="dark"] .binding-hl {
   background-color: rgba(79, 193, 255, 0.25) !important;
   border-radius: 2px !important;
 }
 
-/* ============================================
-   TACTIC STATE DISPLAY
-   ============================================ */
-
-.tactic {
+/* Dark Tactic State */
+html[data-theme^="dark"] .tactic {
   background-color: var(--bg-secondary) !important;
 }
 
-.tactic-state {
+html[data-theme^="dark"] .tactic-state {
   background-color: var(--bg-secondary) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 4px !important;
@@ -304,43 +190,1043 @@ pre code {
   margin: 0.5em 0 !important;
 }
 
-.goal {
+html[data-theme^="dark"] .goal {
   border-left: 3px solid var(--accent) !important;
   padding-left: 0.75em !important;
   margin: 0.5em 0 !important;
 }
 
-.goal-name {
+html[data-theme^="dark"] .goal-name {
   color: var(--syn-function) !important;
   font-weight: 600 !important;
 }
 
-.hypothesis,
-.hypotheses {
+html[data-theme^="dark"] .hypothesis,
+html[data-theme^="dark"] .hypotheses {
   color: var(--text-primary) !important;
 }
 
-.hypothesis .name {
-  color: var(--syn-var) !important;
-}
-
-.hypothesis .type {
-  color: var(--syn-const) !important;
-}
-
-.conclusion {
+html[data-theme^="dark"] .conclusion {
   color: var(--text-primary) !important;
   font-weight: 500 !important;
 }
 
-.case-label,
-.labeled-case {
+/* Dark Messages */
+html[data-theme^="dark"] .syntax-error {
+  background-color: rgba(241, 76, 76, 0.15) !important;
+  border: 1px solid var(--syn-error) !important;
+  border-radius: 4px !important;
+}
+
+html[data-theme^="dark"] .messages {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  margin: 0.5em 0 !important;
+}
+
+/* Dark Tooltips */
+html[data-theme^="dark"] .hover-info,
+html[data-theme^="dark"] .hover-container,
+html[data-theme^="dark"] [data-tippy-root],
+html[data-theme^="dark"] [data-tippy-root] .tippy-box,
+html[data-theme^="dark"] [data-tippy-root] .tippy-content {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme^="dark"] .hl.lean.popup {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Dark Docstrings */
+html[data-theme^="dark"] .docstring {
+  background-color: var(--bg-secondary) !important;
+  border-left: 3px solid var(--syn-comment) !important;
+  padding: 0.75em 1em !important;
+  margin: 0.5em 0 !important;
+  color: var(--text-primary) !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+/* Dark Trace Output */
+html[data-theme^="dark"] .trace,
+html[data-theme^="dark"] .lean-output {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+}
+
+html[data-theme^="dark"] .trace-children {
+  border-left: 2px solid var(--border-color) !important;
+  margin-left: 0.5em !important;
+  padding-left: 0.5em !important;
+}
+
+/* Dark Example Files */
+html[data-theme^="dark"] .example-file {
+  background-color: var(--bg-code) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}
+
+html[data-theme^="dark"] .example-file .line-numbers {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-muted) !important;
+  border-right: 1px solid var(--border-color) !important;
+  padding-right: 0.5em !important;
+  margin-right: 0.5em !important;
+  user-select: none !important;
+}
+
+/* Dark Header */
+html[data-theme^="dark"] body > header,
+html[data-theme^="dark"] body > header .header-title-wrapper {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  padding: 0.5em 1em !important;
+}
+
+html[data-theme^="dark"] body > header .header-title-wrapper a,
+html[data-theme^="dark"] body > header .header-title-wrapper h1 {
+  color: var(--text-primary) !important;
+}
+
+/* Dark Navigation */
+html[data-theme^="dark"] nav,
+html[data-theme^="dark"] .sidebar,
+html[data-theme^="dark"] .toc,
+html[data-theme^="dark"] .nav {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+html[data-theme^="dark"] nav a,
+html[data-theme^="dark"] .sidebar a,
+html[data-theme^="dark"] .toc a {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme^="dark"] nav a:hover,
+html[data-theme^="dark"] .sidebar a:hover,
+html[data-theme^="dark"] .toc a:hover,
+html[data-theme^="dark"] nav a:focus,
+html[data-theme^="dark"] .sidebar a:focus,
+html[data-theme^="dark"] .toc a:focus {
+  color: var(--link-color) !important;
+}
+
+html[data-theme^="dark"] nav a.active,
+html[data-theme^="dark"] .sidebar a.active,
+html[data-theme^="dark"] .toc a.active,
+html[data-theme^="dark"] nav a[aria-current],
+html[data-theme^="dark"] .sidebar a[aria-current] {
+  color: var(--link-color) !important;
+  font-weight: 600 !important;
+}
+
+/* Dark Tables */
+html[data-theme^="dark"] table {
+  border-color: var(--border-color) !important;
+  border-collapse: collapse !important;
+}
+
+html[data-theme^="dark"] th {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.5em !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme^="dark"] td {
+  border: 1px solid var(--border-color) !important;
+  padding: 0.5em !important;
+}
+
+html[data-theme^="dark"] tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Dark Forms */
+html[data-theme^="dark"] input,
+html[data-theme^="dark"] textarea,
+html[data-theme^="dark"] select,
+html[data-theme^="dark"] button {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+}
+
+html[data-theme^="dark"] button:hover,
+html[data-theme^="dark"] input[type="submit"]:hover {
+  background-color: var(--bg-tertiary) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Dark Details */
+html[data-theme^="dark"] details {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  margin: 0.5em 0 !important;
+}
+
+html[data-theme^="dark"] details summary {
+  cursor: pointer !important;
+  color: var(--link-color) !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme^="dark"] details summary:hover {
+  color: var(--link-hover) !important;
+}
+
+/* Dark Misc */
+html[data-theme^="dark"] hr {
+  border-color: var(--border-color) !important;
+  border-style: solid !important;
+}
+
+html[data-theme^="dark"] blockquote {
+  background-color: var(--bg-secondary) !important;
+  border-left: 3px solid var(--accent) !important;
+  color: var(--text-secondary) !important;
+  padding: 0.5em 1em !important;
+  margin: 0.5em 0 !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+html[data-theme^="dark"] ::selection {
+  background-color: rgba(0, 120, 212, 0.4) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Dark Scrollbars */
+html[data-theme^="dark"] ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html[data-theme^="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+html[data-theme^="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+html[data-theme^="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Dark Technical Terms */
+html[data-theme^="dark"] mark,
+html[data-theme^="dark"] .deftech,
+html[data-theme^="dark"] .tech,
+html[data-theme^="dark"] .tech-term,
+html[data-theme^="dark"] .defined-term {
+  background-color: rgba(79, 193, 255, 0.15) !important;
+  color: var(--text-primary) !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
+  border: 1px solid rgba(79, 193, 255, 0.3) !important;
+}
+
+html[data-theme^="dark"] .def-technical-term {
+  color: var(--text-primary) !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   DARK-REGULAR MODE - Simple color inversion only
+   No borders, backgrounds, or embellishments
+   ============================================ */
+
+/* Monochrome code */
+html[data-theme="dark-regular"] .hl.lean,
+html[data-theme="dark-regular"] .hl.lean *,
+html[data-theme="dark-regular"] .hl.lean .keyword,
+html[data-theme="dark-regular"] .hl.lean .const,
+html[data-theme="dark-regular"] .hl.lean .var,
+html[data-theme="dark-regular"] .hl.lean .literal,
+html[data-theme="dark-regular"] .hl.lean .string,
+html[data-theme="dark-regular"] .hl.lean .number,
+html[data-theme="dark-regular"] .hl.lean .sort,
+html[data-theme="dark-regular"] .hl.lean .comment,
+html[data-theme="dark-regular"] .hl.lean .unknown,
+html[data-theme="dark-regular"] .hl.lean .module-name,
+html[data-theme="dark-regular"] .hl.lean .option,
+html[data-theme="dark-regular"] .hl.lean .token {
+  color: var(--text-primary) !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+
+/* Remove code block embellishments */
+html[data-theme="dark-regular"] .hl.lean {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+html[data-theme="dark-regular"] .hl.lean.block {
+  padding: 0 !important;
+  margin: 1em 0 !important;
+}
+
+html[data-theme="dark-regular"] .hl.lean.inline {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+html[data-theme="dark-regular"] pre {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+html[data-theme="dark-regular"] code {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove navigation embellishments */
+html[data-theme="dark-regular"] nav,
+html[data-theme="dark-regular"] .sidebar,
+html[data-theme="dark-regular"] .toc,
+html[data-theme="dark-regular"] .nav {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Remove table embellishments */
+html[data-theme="dark-regular"] table {
+  border: none !important;
+}
+
+html[data-theme="dark-regular"] th {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+html[data-theme="dark-regular"] td {
+  border: none !important;
+}
+
+html[data-theme="dark-regular"] tr:nth-child(even) {
+  background-color: transparent !important;
+}
+
+/* Remove tactic state embellishments */
+html[data-theme="dark-regular"] .tactic,
+html[data-theme="dark-regular"] .tactic-state {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+html[data-theme="dark-regular"] .goal {
+  border-left: none !important;
+  padding-left: 0 !important;
+}
+
+/* Remove message embellishments */
+html[data-theme="dark-regular"] .messages {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove docstring embellishments */
+html[data-theme="dark-regular"] .docstring {
+  background-color: transparent !important;
+  border-left: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove trace embellishments */
+html[data-theme="dark-regular"] .trace,
+html[data-theme="dark-regular"] .lean-output {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+html[data-theme="dark-regular"] .trace-children {
+  border-left: none !important;
+}
+
+/* Remove example file embellishments */
+html[data-theme="dark-regular"] .example-file {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+html[data-theme="dark-regular"] .example-file .line-numbers {
+  background-color: transparent !important;
+  border-right: none !important;
+}
+
+/* Remove details embellishments */
+html[data-theme="dark-regular"] details {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove blockquote embellishments */
+html[data-theme="dark-regular"] blockquote {
+  background-color: transparent !important;
+  border-left: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove form embellishments */
+html[data-theme="dark-regular"] input,
+html[data-theme="dark-regular"] textarea,
+html[data-theme="dark-regular"] select,
+html[data-theme="dark-regular"] button {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove technical term embellishments */
+html[data-theme="dark-regular"] mark,
+html[data-theme="dark-regular"] .deftech,
+html[data-theme="dark-regular"] .tech,
+html[data-theme="dark-regular"] .tech-term,
+html[data-theme="dark-regular"] .defined-term {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove custom scrollbars */
+html[data-theme="dark-regular"] ::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+
+html[data-theme="dark-regular"] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html[data-theme="dark-regular"] ::-webkit-scrollbar-thumb {
+  background: auto;
+  border-radius: 0;
+}
+
+/* Remove tooltip embellishments */
+html[data-theme="dark-regular"] .hover-info,
+html[data-theme="dark-regular"] .hover-container,
+html[data-theme="dark-regular"] [data-tippy-root],
+html[data-theme="dark-regular"] [data-tippy-root] .tippy-box,
+html[data-theme="dark-regular"] [data-tippy-root] .tippy-content {
+  background-color: var(--bg-primary) !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+html[data-theme="dark-regular"] .hl.lean.popup {
+  background-color: var(--bg-primary) !important;
+}
+
+/* ============================================
+   SYNTAX HIGHLIGHTING - DARK MODE
+   Applies to: dark-highlighting only
+   ============================================ */
+
+html[data-theme="dark-highlighting"] .hl.lean .keyword,
+html[data-theme="dark-highlighting"] .hl.lean .keyword.token,
+html[data-theme="dark-highlighting"] .keyword,
+html[data-theme="dark-highlighting"] .keyword.token {
+  color: var(--syn-keyword) !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .const,
+html[data-theme="dark-highlighting"] .hl.lean .const.token,
+html[data-theme="dark-highlighting"] .const,
+html[data-theme="dark-highlighting"] .const.token {
+  color: var(--syn-constant) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .var,
+html[data-theme="dark-highlighting"] .hl.lean .var.token,
+html[data-theme="dark-highlighting"] .var,
+html[data-theme="dark-highlighting"] .var.token {
+  color: var(--syn-var) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .literal,
+html[data-theme="dark-highlighting"] .hl.lean .literal.token,
+html[data-theme="dark-highlighting"] .literal,
+html[data-theme="dark-highlighting"] .literal.token {
+  color: var(--syn-literal) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .string,
+html[data-theme="dark-highlighting"] .hl.lean .string.token,
+html[data-theme="dark-highlighting"] .hl.lean .literal.string,
+html[data-theme="dark-highlighting"] .string,
+html[data-theme="dark-highlighting"] .string.token {
+  color: var(--syn-string) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .number,
+html[data-theme="dark-highlighting"] .hl.lean .number.token,
+html[data-theme="dark-highlighting"] .number,
+html[data-theme="dark-highlighting"] .number.token {
+  color: var(--syn-number) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .sort,
+html[data-theme="dark-highlighting"] .hl.lean .sort.token,
+html[data-theme="dark-highlighting"] .sort,
+html[data-theme="dark-highlighting"] .sort.token {
+  color: var(--syn-sort) !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .comment,
+html[data-theme="dark-highlighting"] .hl.lean .comment.token,
+html[data-theme="dark-highlighting"] .comment,
+html[data-theme="dark-highlighting"] .comment.token {
+  color: var(--syn-comment) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .doc-comment,
+html[data-theme="dark-highlighting"] .hl.lean .doc-comment.token,
+html[data-theme="dark-highlighting"] .doc-comment,
+html[data-theme="dark-highlighting"] .doc-comment.token {
+  color: var(--syn-comment) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .module-name,
+html[data-theme="dark-highlighting"] .hl.lean .module-name.token,
+html[data-theme="dark-highlighting"] .module-name,
+html[data-theme="dark-highlighting"] .module-name.token {
+  color: var(--syn-module) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .option,
+html[data-theme="dark-highlighting"] .hl.lean .option.token,
+html[data-theme="dark-highlighting"] .option,
+html[data-theme="dark-highlighting"] .option.token {
+  color: var(--syn-constant) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .typed,
+html[data-theme="dark-highlighting"] .hl.lean .typed.token,
+html[data-theme="dark-highlighting"] .typed,
+html[data-theme="dark-highlighting"] .typed.token {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .unknown,
+html[data-theme="dark-highlighting"] .hl.lean .unknown.token,
+html[data-theme="dark-highlighting"] .unknown,
+html[data-theme="dark-highlighting"] .unknown.token {
+  color: var(--syn-operator) !important;
+}
+
+/* Universe levels - dark highlighting */
+html[data-theme="dark-highlighting"] .hl.lean .level-var,
+html[data-theme="dark-highlighting"] .hl.lean .level-var.token,
+html[data-theme="dark-highlighting"] .level-var,
+html[data-theme="dark-highlighting"] .level-var.token {
+  color: var(--syn-var) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .level-const,
+html[data-theme="dark-highlighting"] .hl.lean .level-const.token,
+html[data-theme="dark-highlighting"] .level-const,
+html[data-theme="dark-highlighting"] .level-const.token {
+  color: var(--syn-var) !important;
+}
+
+html[data-theme="dark-highlighting"] .hl.lean .level-op,
+html[data-theme="dark-highlighting"] .hl.lean .level-op.token,
+html[data-theme="dark-highlighting"] .level-op,
+html[data-theme="dark-highlighting"] .level-op.token {
+  color: var(--syn-var) !important;
+}
+
+/* Tactic state highlighting - dark */
+html[data-theme="dark-highlighting"] .hypothesis .name {
+  color: var(--syn-var) !important;
+}
+
+html[data-theme="dark-highlighting"] .hypothesis .type {
+  color: var(--syn-const) !important;
+}
+
+html[data-theme="dark-highlighting"] .case-label,
+html[data-theme="dark-highlighting"] .labeled-case {
   color: var(--syn-keyword-control) !important;
   font-weight: 600 !important;
 }
 
+html[data-theme="dark-highlighting"] .trace-class {
+  color: var(--syn-module) !important;
+}
+
+/* Grammar/BNF - dark highlighting */
+html[data-theme="dark-highlighting"] .bnf {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark-highlighting"] .nonterminal {
+  color: var(--syn-var) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="dark-highlighting"] .from-nonterminal {
+  color: var(--syn-var) !important;
+}
+
+html[data-theme="dark-highlighting"] .literal-ident {
+  color: var(--syn-string) !important;
+}
+
+html[data-theme="dark-highlighting"] .plain-keyword {
+  color: var(--syn-keyword) !important;
+}
+
+html[data-theme="dark-highlighting"] .keyword-of {
+  color: var(--syn-keyword) !important;
+}
+
+html[data-theme="dark-highlighting"] .local-name {
+  color: var(--syn-var) !important;
+}
+
 /* ============================================
-   MESSAGES (ERRORS, WARNINGS, INFO)
+   SYNTAX HIGHLIGHTING - LIGHT MODE
+   Applies to: light-highlighting only
+   ============================================ */
+
+html[data-theme="light-highlighting"] .hl.lean .keyword,
+html[data-theme="light-highlighting"] .hl.lean .keyword.token,
+html[data-theme="light-highlighting"] .keyword,
+html[data-theme="light-highlighting"] .keyword.token {
+  color: var(--syn-keyword-light) !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .const,
+html[data-theme="light-highlighting"] .hl.lean .const.token,
+html[data-theme="light-highlighting"] .const,
+html[data-theme="light-highlighting"] .const.token {
+  color: var(--syn-const-light) !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .var,
+html[data-theme="light-highlighting"] .hl.lean .var.token,
+html[data-theme="light-highlighting"] .var,
+html[data-theme="light-highlighting"] .var.token {
+  color: var(--syn-var-light) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .literal,
+html[data-theme="light-highlighting"] .hl.lean .literal.token,
+html[data-theme="light-highlighting"] .literal,
+html[data-theme="light-highlighting"] .literal.token {
+  color: var(--syn-literal-light) !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .string,
+html[data-theme="light-highlighting"] .hl.lean .string.token,
+html[data-theme="light-highlighting"] .hl.lean .literal.string,
+html[data-theme="light-highlighting"] .string,
+html[data-theme="light-highlighting"] .string.token {
+  color: var(--syn-string-light) !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .number,
+html[data-theme="light-highlighting"] .hl.lean .number.token,
+html[data-theme="light-highlighting"] .number,
+html[data-theme="light-highlighting"] .number.token {
+  color: var(--syn-number-light) !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .sort,
+html[data-theme="light-highlighting"] .hl.lean .sort.token,
+html[data-theme="light-highlighting"] .sort,
+html[data-theme="light-highlighting"] .sort.token {
+  color: var(--syn-sort-light) !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .comment,
+html[data-theme="light-highlighting"] .hl.lean .comment.token,
+html[data-theme="light-highlighting"] .comment,
+html[data-theme="light-highlighting"] .comment.token {
+  color: var(--syn-comment-light) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .doc-comment,
+html[data-theme="light-highlighting"] .hl.lean .doc-comment.token,
+html[data-theme="light-highlighting"] .doc-comment,
+html[data-theme="light-highlighting"] .doc-comment.token {
+  color: var(--syn-comment-light) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .module-name,
+html[data-theme="light-highlighting"] .hl.lean .module-name.token,
+html[data-theme="light-highlighting"] .module-name,
+html[data-theme="light-highlighting"] .module-name.token {
+  color: var(--syn-module-light) !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .option,
+html[data-theme="light-highlighting"] .hl.lean .option.token,
+html[data-theme="light-highlighting"] .option,
+html[data-theme="light-highlighting"] .option.token {
+  color: var(--syn-const-light) !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .unknown,
+html[data-theme="light-highlighting"] .hl.lean .unknown.token,
+html[data-theme="light-highlighting"] .unknown,
+html[data-theme="light-highlighting"] .unknown.token {
+  color: var(--syn-operator-light) !important;
+}
+
+/* Universe levels - light highlighting */
+html[data-theme="light-highlighting"] .hl.lean .level-var,
+html[data-theme="light-highlighting"] .hl.lean .level-var.token,
+html[data-theme="light-highlighting"] .level-var,
+html[data-theme="light-highlighting"] .level-var.token {
+  color: var(--syn-var-light) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .level-const,
+html[data-theme="light-highlighting"] .hl.lean .level-const.token,
+html[data-theme="light-highlighting"] .level-const,
+html[data-theme="light-highlighting"] .level-const.token {
+  color: var(--syn-var-light) !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean .level-op,
+html[data-theme="light-highlighting"] .hl.lean .level-op.token,
+html[data-theme="light-highlighting"] .level-op,
+html[data-theme="light-highlighting"] .level-op.token {
+  color: var(--syn-var-light) !important;
+}
+
+/* Grammar/BNF - light highlighting */
+html[data-theme="light-highlighting"] .nonterminal {
+  color: var(--syn-var-light) !important;
+  font-style: italic !important;
+}
+
+html[data-theme="light-highlighting"] .from-nonterminal {
+  color: var(--syn-var-light) !important;
+}
+
+html[data-theme="light-highlighting"] .literal-ident {
+  color: var(--syn-string-light) !important;
+}
+
+html[data-theme="light-highlighting"] .plain-keyword {
+  color: var(--syn-keyword-light) !important;
+}
+
+html[data-theme="light-highlighting"] .keyword-of {
+  color: var(--syn-keyword-light) !important;
+}
+
+html[data-theme="light-highlighting"] .local-name {
+  color: var(--syn-var-light) !important;
+}
+
+/* ============================================
+   LIGHT-HIGHLIGHTING MODE - EMBELLISHMENTS
+   Same structure as dark-highlighting, light colors
+   ============================================ */
+
+/* Light Code Blocks */
+html[data-theme="light-highlighting"] .hl.lean {
+  background-color: var(--bg-light-code) !important;
+  color: var(--text-light-primary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean.block {
+  padding: 1em !important;
+  margin: 1em 0 !important;
+  overflow-x: auto !important;
+}
+
+html[data-theme="light-highlighting"] .hl.lean.inline {
+  padding: 0.15em 0.4em !important;
+  border-radius: 3px !important;
+}
+
+html[data-theme="light-highlighting"] pre {
+  background-color: var(--bg-light-code) !important;
+  color: var(--text-light-primary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+}
+
+html[data-theme="light-highlighting"] code {
+  background-color: var(--bg-light-secondary) !important;
+  color: var(--text-light-primary) !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
+}
+
+html[data-theme="light-highlighting"] pre code {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* Light Interactive Elements */
+html[data-theme="light-highlighting"] .token.has-info:hover,
+html[data-theme="light-highlighting"] .has-info:hover {
+  background-color: var(--bg-light-hover) !important;
+  border-radius: 2px !important;
+}
+
+html[data-theme="light-highlighting"] .token.binding-hl,
+html[data-theme="light-highlighting"] .binding-hl {
+  background-color: rgba(0, 120, 212, 0.2) !important;
+  border-radius: 2px !important;
+}
+
+/* Light Tactic State */
+html[data-theme="light-highlighting"] .tactic {
+  background-color: var(--bg-light-secondary) !important;
+}
+
+html[data-theme="light-highlighting"] .tactic-state {
+  background-color: var(--bg-light-secondary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+  padding: 0.75em !important;
+  margin: 0.5em 0 !important;
+}
+
+html[data-theme="light-highlighting"] .goal {
+  border-left: 3px solid var(--accent-light) !important;
+  padding-left: 0.75em !important;
+  margin: 0.5em 0 !important;
+}
+
+html[data-theme="light-highlighting"] .goal-name {
+  color: var(--text-light-primary) !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light-highlighting"] .hypothesis,
+html[data-theme="light-highlighting"] .hypotheses {
+  color: var(--text-light-primary) !important;
+}
+
+html[data-theme="light-highlighting"] .conclusion {
+  color: var(--text-light-primary) !important;
+  font-weight: 500 !important;
+}
+
+/* Light Messages */
+html[data-theme="light-highlighting"] .syntax-error {
+  background-color: rgba(241, 76, 76, 0.1) !important;
+  border: 1px solid var(--syn-error) !important;
+  border-radius: 4px !important;
+}
+
+html[data-theme="light-highlighting"] .messages {
+  background-color: var(--bg-light-secondary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  margin: 0.5em 0 !important;
+}
+
+/* Light Docstrings */
+html[data-theme="light-highlighting"] .docstring {
+  background-color: var(--bg-light-secondary) !important;
+  border-left: 3px solid var(--syn-comment-light) !important;
+  padding: 0.75em 1em !important;
+  margin: 0.5em 0 !important;
+  color: var(--text-light-primary) !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+/* Light Trace Output */
+html[data-theme="light-highlighting"] .trace,
+html[data-theme="light-highlighting"] .lean-output {
+  background-color: var(--bg-light-secondary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+}
+
+html[data-theme="light-highlighting"] .trace-children {
+  border-left: 2px solid var(--border-light) !important;
+  margin-left: 0.5em !important;
+  padding-left: 0.5em !important;
+}
+
+/* Light Example Files */
+html[data-theme="light-highlighting"] .example-file {
+  background-color: var(--bg-light-code) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+}
+
+html[data-theme="light-highlighting"] .example-file .line-numbers {
+  background-color: var(--bg-light-secondary) !important;
+  color: var(--text-light-muted) !important;
+  border-right: 1px solid var(--border-light) !important;
+  padding-right: 0.5em !important;
+  margin-right: 0.5em !important;
+  user-select: none !important;
+}
+
+/* Light Navigation */
+html[data-theme="light-highlighting"] nav,
+html[data-theme="light-highlighting"] .sidebar,
+html[data-theme="light-highlighting"] .toc,
+html[data-theme="light-highlighting"] .nav {
+  background-color: var(--bg-light-secondary) !important;
+  border-color: var(--border-light) !important;
+}
+
+html[data-theme="light-highlighting"] nav a,
+html[data-theme="light-highlighting"] .sidebar a,
+html[data-theme="light-highlighting"] .toc a {
+  color: var(--text-light-secondary) !important;
+}
+
+html[data-theme="light-highlighting"] nav a:hover,
+html[data-theme="light-highlighting"] .sidebar a:hover,
+html[data-theme="light-highlighting"] .toc a:hover,
+html[data-theme="light-highlighting"] nav a:focus,
+html[data-theme="light-highlighting"] .sidebar a:focus,
+html[data-theme="light-highlighting"] .toc a:focus {
+  color: var(--link-light) !important;
+}
+
+html[data-theme="light-highlighting"] nav a.active,
+html[data-theme="light-highlighting"] .sidebar a.active,
+html[data-theme="light-highlighting"] .toc a.active,
+html[data-theme="light-highlighting"] nav a[aria-current],
+html[data-theme="light-highlighting"] .sidebar a[aria-current] {
+  color: var(--link-light) !important;
+  font-weight: 600 !important;
+}
+
+/* Light Tables */
+html[data-theme="light-highlighting"] table {
+  border-color: var(--border-light) !important;
+  border-collapse: collapse !important;
+}
+
+html[data-theme="light-highlighting"] th {
+  background-color: var(--bg-light-secondary) !important;
+  border: 1px solid var(--border-light) !important;
+  padding: 0.5em !important;
+  font-weight: 600 !important;
+}
+
+html[data-theme="light-highlighting"] td {
+  border: 1px solid var(--border-light) !important;
+  padding: 0.5em !important;
+}
+
+html[data-theme="light-highlighting"] tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Light Details */
+html[data-theme="light-highlighting"] details {
+  background-color: var(--bg-light-secondary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+  padding: 0.5em !important;
+  margin: 0.5em 0 !important;
+}
+
+html[data-theme="light-highlighting"] details summary {
+  cursor: pointer !important;
+  color: var(--link-light) !important;
+  font-weight: 500 !important;
+}
+
+html[data-theme="light-highlighting"] details summary:hover {
+  color: var(--link-light-hover) !important;
+}
+
+/* Light Misc */
+html[data-theme="light-highlighting"] blockquote {
+  background-color: var(--bg-light-secondary) !important;
+  border-left: 3px solid var(--accent-light) !important;
+  color: var(--text-light-secondary) !important;
+  padding: 0.5em 1em !important;
+  margin: 0.5em 0 !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+html[data-theme="light-highlighting"] ::selection {
+  background-color: rgba(0, 120, 212, 0.3) !important;
+  color: var(--text-light-primary) !important;
+}
+
+/* Light Technical Terms */
+html[data-theme="light-highlighting"] mark,
+html[data-theme="light-highlighting"] .deftech,
+html[data-theme="light-highlighting"] .tech,
+html[data-theme="light-highlighting"] .tech-term,
+html[data-theme="light-highlighting"] .defined-term {
+  background-color: rgba(0, 120, 212, 0.1) !important;
+  color: var(--text-light-primary) !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
+  border: 1px solid rgba(0, 120, 212, 0.3) !important;
+}
+
+html[data-theme="light-highlighting"] .def-technical-term {
+  color: var(--text-light-primary) !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   MESSAGE INDICATORS (all themes)
    ============================================ */
 
 .has-info.error,
@@ -364,295 +1250,9 @@ pre code {
   border-bottom: 2px wavy var(--syn-info) !important;
 }
 
-.syntax-error {
-  background-color: rgba(241, 76, 76, 0.15) !important;
-  border: 1px solid var(--syn-error) !important;
-  border-radius: 4px !important;
-}
-
-.messages {
-  background-color: var(--bg-secondary) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 4px !important;
-  padding: 0.5em !important;
-  margin: 0.5em 0 !important;
-}
-
 /* ============================================
-   TOOLTIPS / HOVER POPUPS
+   LIGHT-REGULAR MODE
+   No styling - site appears as-is
    ============================================ */
 
-.hover-info,
-.hover-container,
-[data-tippy-root],
-[data-tippy-root] .tippy-box,
-[data-tippy-root] .tippy-content {
-  background-color: var(--bg-secondary) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 4px !important;
-  color: var(--syn-var) !important;
-}
-
-.hl.lean.popup {
-  background-color: var(--bg-secondary) !important;
-}
-
-/* ============================================
-   DOCSTRINGS
-   ============================================ */
-
-.docstring {
-  background-color: var(--bg-secondary) !important;
-  border-left: 3px solid var(--syn-comment) !important;
-  padding: 0.75em 1em !important;
-  margin: 0.5em 0 !important;
-  color: var(--text-primary) !important;
-  border-radius: 0 4px 4px 0 !important;
-}
-
-/* ============================================
-   TRACE OUTPUT
-   ============================================ */
-
-.trace,
-.lean-output {
-  background-color: var(--bg-secondary) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 4px !important;
-  padding: 0.5em !important;
-  font-family: inherit !important;
-}
-
-.trace-children {
-  border-left: 2px solid var(--border-color) !important;
-  margin-left: 0.5em !important;
-  padding-left: 0.5em !important;
-}
-
-.trace-class {
-  color: var(--syn-module) !important;
-}
-
-/* ============================================
-   EXAMPLE FILE DISPLAYS
-   ============================================ */
-
-.example-file {
-  background-color: var(--bg-code) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 4px !important;
-}
-
-.example-file .line-numbers {
-  background-color: var(--bg-secondary) !important;
-  color: var(--text-muted) !important;
-  border-right: 1px solid var(--border-color) !important;
-  padding-right: 0.5em !important;
-  margin-right: 0.5em !important;
-  user-select: none !important;
-}
-
-/* ============================================
-   HEADER
-   ============================================ */
-
-body > header,
-body > header .header-title-wrapper {
-  background-color: var(--bg-primary) !important;
-  color: var(--text-primary) !important;
-  padding: 0.5em 1em !important;
-}
-
-body > header .header-title-wrapper a,
-body > header .header-title-wrapper h1 {
-  color: var(--text-primary) !important;
-}
-
-/* ============================================
-   NAVIGATION & SIDEBAR
-   ============================================ */
-
-nav, .sidebar, .toc, .nav {
-  background-color: var(--bg-secondary) !important;
-  border-color: var(--border-color) !important;
-}
-
-nav a, .sidebar a, .toc a {
-  color: var(--text-secondary) !important;
-}
-
-nav a:hover, .sidebar a:hover, .toc a:hover,
-nav a:focus, .sidebar a:focus, .toc a:focus {
-  color: var(--link-color) !important;
-}
-
-/* Active/current nav item */
-nav a.active, .sidebar a.active, .toc a.active,
-nav a[aria-current], .sidebar a[aria-current] {
-  color: var(--link-color) !important;
-  font-weight: 600 !important;
-}
-
-/* ============================================
-   TABLES
-   ============================================ */
-
-table {
-  border-color: var(--border-color) !important;
-  border-collapse: collapse !important;
-}
-
-th {
-  background-color: var(--bg-secondary) !important;
-  border: 1px solid var(--border-color) !important;
-  padding: 0.5em !important;
-  font-weight: 600 !important;
-}
-
-td {
-  border: 1px solid var(--border-color) !important;
-  padding: 0.5em !important;
-}
-
-tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.03) !important;
-}
-
-/* ============================================
-   FORMS & INPUTS
-   ============================================ */
-
-input, textarea, select, button {
-  background-color: var(--bg-secondary) !important;
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 4px !important;
-}
-
-button:hover, input[type="submit"]:hover {
-  background-color: var(--bg-tertiary) !important;
-  border-color: var(--accent) !important;
-}
-
-/* ============================================
-   DETAILS / COLLAPSIBLES
-   ============================================ */
-
-details {
-  background-color: var(--bg-secondary) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 4px !important;
-  padding: 0.5em !important;
-  margin: 0.5em 0 !important;
-}
-
-details summary {
-  cursor: pointer !important;
-  color: var(--link-color) !important;
-  font-weight: 500 !important;
-}
-
-details summary:hover {
-  color: var(--link-hover) !important;
-}
-
-/* ============================================
-   MISC OVERRIDES
-   ============================================ */
-
-hr {
-  border-color: var(--border-color) !important;
-  border-style: solid !important;
-}
-
-blockquote {
-  background-color: var(--bg-secondary) !important;
-  border-left: 3px solid var(--accent) !important;
-  color: var(--text-secondary) !important;
-  padding: 0.5em 1em !important;
-  margin: 0.5em 0 !important;
-  border-radius: 0 4px 4px 0 !important;
-}
-
-/* Selection highlight */
-::selection {
-  background-color: rgba(0, 120, 212, 0.4) !important;
-  color: var(--text-primary) !important;
-}
-
-/* Scrollbars (webkit) */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
-}
-
-/* ============================================
-   TECHNICAL TERMS / DEFINITIONS
-   ============================================ */
-
-/* Technical term highlights (deftech, mark, etc.) */
-mark,
-.deftech,
-.tech,
-.tech-term,
-.defined-term {
-  background-color: rgba(79, 193, 255, 0.15) !important;
-  color: var(--text-primary) !important;
-  padding: 0.1em 0.3em !important;
-  border-radius: 3px !important;
-  border: 1px solid rgba(79, 193, 255, 0.3) !important;
-}
-
-/* Technical term definitions - no special styling, just ensure readable text */
-.def-technical-term {
-  color: var(--text-primary) !important;
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-}
-
-/* ============================================
-   GRAMMAR / BNF NOTATION
-   ============================================ */
-
-.bnf {
-  color: var(--text-secondary) !important;
-}
-
-.nonterminal {
-  color: var(--syn-var) !important;
-  font-style: italic !important;
-}
-
-.from-nonterminal {
-  color: var(--syn-var) !important;
-}
-
-.literal-ident {
-  color: var(--syn-string) !important;
-}
-
-.plain-keyword {
-  color: var(--syn-keyword) !important;
-}
-
-.keyword-of {
-  color: var(--syn-keyword) !important;
-}
-
-.local-name {
-  color: var(--syn-var) !important;
-}
+/* light-regular: intentionally empty - no overrides */
