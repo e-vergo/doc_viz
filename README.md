@@ -1,18 +1,23 @@
 # Lean Docs Highlighter
 
-A Safari Web Extension that adds dark mode and syntax highlighting to the [Lean 4 language reference documentation](https://lean-lang.org/doc/reference/latest/).
+A Safari Web Extension that adds theme options and syntax highlighting to the [Lean 4 language reference documentation](https://lean-lang.org/doc/reference/latest/).
 
-| Without Extension | With Extension |
-|-------------------|----------------|
-| ![Docs as-is](docs_as_is.png) | ![With extension](with_ext_enabled.png) |
+|  | Light | Dark |
+|--|-------|------|
+| **Regular** | ![Light](light.png) | ![Dark](dark.png) |
+| **+ Syntax** | ![Light + Syntax](light_highlight.png) | ![Dark + Syntax](dark_highlight.png) |
 
 ## Features
 
-- **Dark theme** based on VS Code Dark Modern
+- **4 Theme Modes** accessible via toolbar popup:
+  - **Light** - Original site appearance
+  - **Light + Syntax** - Original background with syntax highlighting and styled code blocks
+  - **Dark** - Inverted colors, minimal styling
+  - **Dark + Syntax** - VS Code Dark Modern theme with full styling (default)
 - **Syntax highlighting** using semantic token classes from Verso/SubVerso
 - Styled code blocks, tactic states, tooltips, and documentation
 
-### Syntax Colors
+### Syntax Colors (Dark + Syntax)
 
 | Token Type | Color |
 |------------|-------|
@@ -52,11 +57,23 @@ A Safari Web Extension that adds dark mode and syntax highlighting to the [Lean 
 
 ## Usage
 
-Once enabled, the dark theme with syntax highlighting will be applied automatically on:
+Once enabled, click the extension icon in Safari's toolbar to select a theme mode. The extension works on:
 
 - https://lean-lang.org/doc/reference/
 - https://lean-lang.org/theorem_proving_in_lean4/
 - https://lean-lang.org/functional_programming_in_lean/
+- https://leanprover.github.io/reference-manual/
+
+### Theme Modes
+
+| Mode | Background | Code Style | Use Case |
+|------|------------|------------|----------|
+| Light | Original | Monochrome | Reading in bright environments |
+| Light + Syntax | Original | Colored with borders | Syntax awareness on light background |
+| Dark | Inverted | Monochrome | Eye comfort, minimal styling |
+| Dark + Syntax | VS Code Dark | Colored with borders | Full IDE-like experience (default) |
+
+Theme selection resets on page reload (no persistence).
 
 ### Development Workflow
 
@@ -79,7 +96,9 @@ Lean Docs Highlighter/
 ├── Lean Docs Highlighter.xcodeproj/   # Xcode project
 ├── Shared (Extension)/
 │   └── Resources/
-│       ├── content.css                # Dark theme + syntax highlighting
+│       ├── content.css                # Theme styles + syntax highlighting
+│       ├── content.js                 # Theme application logic
+│       ├── popup.html/css/js          # Theme selector UI
 │       ├── manifest.json              # Extension configuration
 │       └── images/                    # Extension icons
 ├── Shared (App)/                      # Container app resources
@@ -98,7 +117,7 @@ The Lean reference manual is built with [Verso](https://github.com/leanprover/ve
 - `.comment` - Comments
 - `.unknown` - Operators and punctuation
 
-These classes exist in the production HTML but have minimal styling. This extension injects CSS that applies dark backgrounds and syntax colors to these existing semantic classes.
+These classes exist in the production HTML but have minimal styling. This extension injects CSS that applies theme-specific backgrounds and syntax colors to these existing semantic classes. Theme selection is handled via a `data-theme` attribute on the document root.
 
 ## Customization
 
@@ -106,15 +125,20 @@ All colors are defined as CSS variables at the top of `content.css`:
 
 ```css
 :root {
+  /* Dark mode */
   --bg-primary: #1f1f1f;
   --syn-keyword: #569cd6;
   --syn-const: #4ec9b0;
+
+  /* Light mode */
+  --bg-light-code: #f8f8f8;
+  --syn-keyword-light: #0000ff;
   /* ... */
 }
 ```
 
-Edit these values and rebuild to customize the theme.
+Edit these values and rebuild to customize the themes.
 
 ## License
 
-apache 2.0
+Apache 2.0
